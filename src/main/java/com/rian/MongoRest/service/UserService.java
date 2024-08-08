@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
 
-    private static final String NOT_FOUND_MESSAGE = "user not found";
+    private static final String NOT_FOUND_MESSAGE = "user not found on database!";
 
     private final UserRepository userRepository;
 
@@ -34,6 +34,7 @@ public class UserService {
 
     private UserDTO fromDTO(UserModel user) {
         return UserDTO.builder()
+                .id(user.getId())
                 .name(user.getName())
                 .lastName(user.getLastName())
                 .age(user.getAge())

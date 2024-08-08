@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/getUser/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable("id") String id) {
+    public ResponseEntity<UserDTO> getUserById(@PathVariable(name = "id") String id) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.findUserByIdService(id));
     }
 
