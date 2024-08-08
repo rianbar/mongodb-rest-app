@@ -32,6 +32,28 @@ public class UserService {
         return fromDTO((insertUser));
     }
 
+    public UserDTO updateUserService(String id, UserDTO dto) {
+        var user = userRepository.findById(id);
+        if (user.isEmpty()) throw new UserNotFoundException(NOT_FOUND_MESSAGE);
+        var updated = userRepository.save(updateTo(dto, user.get()));
+        return fromDTO(updated);
+    }
+
+    public void deleteUserService(String id) {
+        var user = userRepository.findById(id);
+        if (user.isEmpty()) throw new UserNotFoundException(NOT_FOUND_MESSAGE);
+        userRepository.delete(user.get());
+    }
+
+    private UserModel updateTo(UserDTO dto, UserModel model) {
+        return UserModel.builder()
+                .id(model.getId())
+                .name(dto.getName())
+                .lastName(dto.getLastName())
+                .age(dto.getAge())
+                .build();
+    }
+
     private UserDTO fromDTO(UserModel user) {
         return UserDTO.builder()
                 .id(user.getId())
