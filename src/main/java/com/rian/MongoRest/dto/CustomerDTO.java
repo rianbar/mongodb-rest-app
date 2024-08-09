@@ -8,7 +8,7 @@ import org.springframework.validation.annotation.Validated;
 @Data
 @Builder
 @Validated
-public class UserDTO {
+public class CustomerDTO {
     @NotBlank
     private String id;
     @NotBlank

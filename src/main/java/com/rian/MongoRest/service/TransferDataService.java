@@ -1,14 +1,14 @@
 package com.rian.MongoRest.service;
 
-import com.rian.MongoRest.dto.UserDTO;
-import com.rian.MongoRest.model.UserModel;
+import com.rian.MongoRest.dto.CustomerDTO;
+import com.rian.MongoRest.model.CustomerModel;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TransferDataService {
 
-    public UserModel updateTo(UserDTO dto, UserModel model) {
-        return UserModel.builder()
+    public CustomerModel updateTo(CustomerDTO dto, CustomerModel model) {
+        return CustomerModel.builder()
                 .id(model.getId())
                 .name(dto.getName())
                 .lastName(dto.getLastName())
@@ -16,8 +16,8 @@ public class TransferDataService {
                 .build();
     }
 
-    public UserDTO fromDTO(UserModel user) {
-        return UserDTO.builder()
+    public CustomerDTO fromDTO(CustomerModel user) {
+        return CustomerDTO.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .lastName(user.getLastName())
@@ -25,8 +25,8 @@ public class TransferDataService {
                 .build();
     }
 
-    public UserModel fromModel(UserDTO dto) {
-        return UserModel.builder()
+    public CustomerModel fromModel(CustomerDTO dto) {
+        return CustomerModel.builder()
                 .name(dto.getName())
                 .lastName(dto.getLastName())
                 .age(dto.getAge())
