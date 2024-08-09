@@ -1,15 +1,19 @@
 package com.rian.MongoRest.model;
 
+import com.rian.MongoRest.dto.CustomerDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-@Document
+
+@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Document(collection = "orders")
 public class OrderModel {
 
     @MongoId
@@ -17,5 +21,5 @@ public class OrderModel {
     private String title;
     private double price;
     private String additional;
-    private CustomerModel customer;
+    private CustomerDTO customer;
 }
